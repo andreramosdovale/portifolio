@@ -1,14 +1,31 @@
 import NextLink from "next/link";
-import { Flex, Text, Switch, Link, Box } from "@chakra-ui/react";
-import { ptBr, en } from "./content.data";
+import { Flex, Text, Link, Box, Center } from "@chakra-ui/react";
+import { ptBr, en, IContent } from "./content.data";
 import { US, BR } from "country-flag-icons/react/3x2";
+import { useState } from "react";
 
 interface IHeader {
   path: string;
 }
 
 const Header = ({ path }: IHeader) => {
-  const content = ptBr;
+  const [content, setContent] = useState<IContent>(ptBr);
+  const [currentLang, setCurrentLang] = useState<"ptBr" | "en">("ptBr");
+
+  const changeFilterFlag = (lang: string): boolean => {
+    if (currentLang === lang) {
+      return true;
+    }
+
+    return false;
+  };
+
+  const changeLang = (lang: "ptBr" | "en") => {
+    const contentType = lang === "ptBr" ? ptBr : en;
+
+    setContent(contentType);
+    setCurrentLang(lang);
+  };
 
   return (
     <>
@@ -97,19 +114,25 @@ const Header = ({ path }: IHeader) => {
               }}
               height="100%"
               marginRight={{
-                xl: "10px",
-                md: "10px",
-                sm: "10px",
+                xl: "5px",
+                md: "5px",
+                sm: "5px",
                 xs: "1px",
                 xxs: "1px",
               }}
+              cursor="pointer"
+              onClick={() => changeLang("ptBr")}
             >
-              <BR title="Brazil" />
+              <BR
+                title="Português"
+                filter={changeFilterFlag("ptBr") ? "" : "grayscale(90%)"}
+              />
+              <Center>
+                <Text fontSize="xs">
+                  <i>PT-BR</i>
+                </Text>
+              </Center>
             </Box>
-            <Switch
-              size={{ xl: "md", md: "sm", sm: "sm", xs: "sm", xxs: "sm" }}
-              alignSelf="center"
-            />
             <Box
               width={{
                 xl: "50px",
@@ -119,15 +142,18 @@ const Header = ({ path }: IHeader) => {
                 xxs: "25px",
               }}
               height="100%"
-              marginLeft={{
-                xl: "10px",
-                md: "10px",
-                sm: "10px",
-                xs: "1px",
-                xxs: "1px",
-              }}
+              cursor="pointer"
+              onClick={() => changeLang("en")}
             >
-              <US title="United States" filter="grayscale(90%)" />
+              <US
+                title="English"
+                filter={changeFilterFlag("en") ? "" : "grayscale(90%)"}
+              />
+              <Center>
+                <Text fontSize="xs">
+                  <i>EN</i>
+                </Text>
+              </Center>
             </Box>
           </Flex>
         </Flex>
