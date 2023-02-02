@@ -1,5 +1,5 @@
 import NextLink from "next/link";
-import { Flex, Text, Switch, Link } from "@chakra-ui/react";
+import { Flex, Text, Switch, Link, Box } from "@chakra-ui/react";
 import { ptBr, en } from "./content.data";
 
 interface IHeader {
@@ -11,37 +11,119 @@ const Header = ({ path }: IHeader) => {
 
   return (
     <>
-      <Flex
-        margin="0 30%"
-        alignItems="center"
-        justifyContent="space-between"
-        height="10vh"
+      <Box
+        margin={{
+          "3xl": "0 25%",
+          "2xl": "0 20%",
+          xl: "0 20%",
+          md: "0 15%",
+          sm: "0 5%",
+          xs: "0 2%",
+        }}
       >
-        <Link as={NextLink} href="/">
-          <Text fontSize="xl">{content.home}</Text>
-        </Link>
-        <Link as={NextLink} href="/about">
-          <Text fontSize="xl">{content.about}</Text>
-        </Link>
-        <Link as={NextLink} href="/experience">
-          <Text fontSize="xl">{content.experience}</Text>
-        </Link>
-        <Link as={NextLink} href="/projects">
-          <Text fontSize="xl">{content.projects}</Text>
-        </Link>
-        <Link as={NextLink} href="/education">
-          <Text fontSize="xl">{content.education}</Text>
-        </Link>
-        <Flex>
-          <Text fontSize="xl" marginRight="10px">
-            Português
-          </Text>
-          <Switch size="lg" />
-          <Text fontSize="xl" marginLeft="10px">
-            English
-          </Text>
+        <Flex
+          alignItems="center"
+          justifyContent="space-between"
+          height="10vh"
+          max-width="100vw"
+        >
+          <Link as={NextLink} href="/">
+            <Text
+              fontSize={{
+                "2xl": "2xl",
+                xl: "xl",
+                md: "lg",
+                sm: "sm",
+                xs: "xs",
+              }}
+            >
+              {content.home}
+            </Text>
+          </Link>
+          <Link as={NextLink} href="/about">
+            <Text
+              fontSize={{
+                "2xl": "2xl",
+                xl: "xl",
+                md: "lg",
+                sm: "sm",
+                xs: "xs",
+              }}
+            >
+              {content.about}
+            </Text>
+          </Link>
+          <Link as={NextLink} href="/experience">
+            <Text
+              fontSize={{
+                "2xl": "2xl",
+                xl: "xl",
+                md: "lg",
+                sm: "sm",
+                xs: "xs",
+              }}
+            >
+              {content.experience}
+            </Text>
+          </Link>
+          <Link as={NextLink} href="/projects">
+            <Text
+              fontSize={{
+                "2xl": "2xl",
+                xl: "xl",
+                md: "lg",
+                sm: "sm",
+                xs: "xs",
+              }}
+            >
+              {content.projects}
+            </Text>
+          </Link>
+          <Link as={NextLink} href="/education">
+            <Text
+              fontSize={{
+                "2xl": "2xl",
+                xl: "xl",
+                md: "lg",
+                sm: "sm",
+                xs: "xs",
+              }}
+            >
+              {content.education}
+            </Text>
+          </Link>
+          <Flex marginRight={{ sm: "10px" }}>
+            <Text
+              fontSize={{
+                "2xl": "2xl",
+                xl: "xl",
+                md: "lg",
+                sm: "sm",
+                xs: "xs",
+              }}
+              marginRight={{ xl: "10px", md: "10px", sm: "10px", xs: "1px" }}
+            >
+              Português
+            </Text>
+            <Switch
+              size={{ xl: "md", md: "sm", sm: "sm", xs: "sm" }}
+              alignSelf="center"
+            />
+            <Text
+              fontSize={{
+                "2xl": "2xl",
+                xl: "xl",
+                md: "lg",
+                sm: "sm",
+                xs: "xs",
+              }}
+              marginLeft={{ xl: "10px", md: "10px", sm: "10px", xs: "1px" }}
+            >
+              English
+            </Text>
+          </Flex>
         </Flex>
-      </Flex>
+      </Box>
     </>
   );
 };
