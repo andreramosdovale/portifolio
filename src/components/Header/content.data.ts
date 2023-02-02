@@ -1,23 +1,20 @@
-interface IContact {
+interface IContent {
   home: string;
   about: string;
   experience: string;
   projects: string;
-  education: string;
 }
 
-export const ptBr: IContact = {
+export const ptBr: IContent = {
   home: "Home",
   about: "Sobre",
   experience: "Experiência",
   projects: "Projetos",
-  education: "Educação",
 };
 
-export const en: IContact = {
+export const en: IContent = {
   home: "Home",
   about: "About",
   experience: "Experience",
   projects: "Projects",
-  education: "Education",
 };
