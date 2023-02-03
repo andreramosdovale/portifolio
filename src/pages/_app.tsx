@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={deafaultTheme}>
       <LangContext.Provider value={{ lang, setLang }}>
-        <Component {...pageProps} />
+        <Component {...pageProps} lang={lang} />
       </LangContext.Provider>
     </ChakraProvider>
   );

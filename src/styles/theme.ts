@@ -1,8 +1,11 @@
 import { extendTheme } from "@chakra-ui/react";
 
 const colors = {
-  primaryColor: "",
-  backgroundColor: ""
+  fontColorPrimary: "#fff",
+  primaryColor: "#b33cff",
+  primaryGrayColor: "#3f3d3b",
+  secondaryGrayColor: "#32312f",
+  tertiaryGreyColor: "#454340",
 };
 
 const breakpoints = {
@@ -18,3 +21,4 @@ const breakpoints = {
 };
 
 export const deafaultTheme = extendTheme({ colors, breakpoints });
+export const defaultColors = { ...colors };

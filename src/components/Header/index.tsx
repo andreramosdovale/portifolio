@@ -1,10 +1,11 @@
 import NextLink from "next/link";
-import { Flex, Text, Link, Box } from "@chakra-ui/react";
+import { Flex, Text, Link, Box, color } from "@chakra-ui/react";
 import { ptBr, en } from "@/content/Header.data";
 import { IContentHeader } from "@/types/IContentHeader";
 import { US, BR } from "country-flag-icons/react/3x2";
 import { useContext, useState } from "react";
 import LangContext from "@/context/LangContext";
+import { defaultColors } from "@/styles/theme";
 
 interface IHeader {
   path: string | null;
@@ -29,6 +30,12 @@ const Header = ({ path }: IHeader) => {
     setLang(lang);
     setCurrentLang(lang);
     setContent(contentType);
+  };
+
+  const AddBorderBotton = (component: string) => {
+    if (path === component) {
+      return `3px solid ${defaultColors.primaryColor}`;
+    }
   };
 
   return (
@@ -61,6 +68,13 @@ const Header = ({ path }: IHeader) => {
                 xs: "xs",
                 xxs: "xs",
               }}
+              style={{
+                borderBottom: AddBorderBotton("Home"),
+              }}
+              color={defaultColors.fontColorPrimary}
+              _hover={{
+                color: defaultColors.primaryColor,
+              }}
             >
               {content.home}
             </Text>
@@ -74,6 +88,13 @@ const Header = ({ path }: IHeader) => {
                 sm: "sm",
                 xs: "xs",
                 xxs: "xs",
+              }}
+              style={{
+                borderBottom: AddBorderBotton("About"),
+              }}
+              color={defaultColors.fontColorPrimary}
+              _hover={{
+                color: defaultColors.primaryColor,
               }}
             >
               {content.about}
@@ -93,6 +114,13 @@ const Header = ({ path }: IHeader) => {
                 xs: "xs",
                 xxs: "xs",
               }}
+              style={{
+                borderBottom: AddBorderBotton("Experience"),
+              }}
+              color={defaultColors.fontColorPrimary}
+              _hover={{
+                color: defaultColors.primaryColor,
+              }}
             >
               {content.experience}
             </Text>
@@ -110,6 +138,13 @@ const Header = ({ path }: IHeader) => {
                 sm: "sm",
                 xs: "xs",
                 xxs: "xs",
+              }}
+              style={{
+                borderBottom: AddBorderBotton("Projects"),
+              }}
+              color={defaultColors.fontColorPrimary}
+              _hover={{
+                color: defaultColors.primaryColor,
               }}
             >
               {content.projects}

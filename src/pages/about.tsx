@@ -1,17 +1,16 @@
 import Head from "next/head";
 import Header from "@/components/Header";
-import { useContext, useEffect, useState } from "react";
-import LangContext from "@/context/LangContext";
+import { useEffect, useState } from "react";
 import { IContentAbout } from "@/types/IContentAbout";
 import { en, ptBr } from "@/content/About.data";
+import { IDefaultProps } from "@/types/IDefaultProps";
 
-export default function About() {
-  const { lang } = useContext(LangContext);
+export default function About({ ...props }: IDefaultProps) {
   const [content, setContent] = useState<IContentAbout>(ptBr);
 
   useEffect(() => {
-    setContent(lang === "ptBr" ? ptBr : en);
-  }, [lang]);
+    setContent(props.lang === "ptBr" ? ptBr : en);
+  }, [props.lang]);
 
   return (
     <>
