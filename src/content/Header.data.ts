@@ -1,13 +1,13 @@
-import { IContent } from "@/types/IContent";
+import { IContentHeader } from "@/types/IContentHeader";
 
-export const ptBr: IContent = {
+export const ptBr: IContentHeader = {
   home: "Home",
   about: "Sobre",
   experience: "Experiência",
   projects: "Projetos",
 };
 
-export const en: IContent = {
+export const en: IContentHeader = {
   home: "Home",
   about: "About",
   experience: "Experience",

@@ -1,7 +1,7 @@
 import NextLink from "next/link";
 import { Flex, Text, Link, Box } from "@chakra-ui/react";
-import { ptBr, en } from "./content.data";
-import { IContent } from "@/types/IContent";
+import { ptBr, en } from "@/content/Header.data";
+import { IContentHeader } from "@/types/IContentHeader";
 import { US, BR } from "country-flag-icons/react/3x2";
 import { useContext, useState } from "react";
 import LangContext from "@/context/LangContext";
@@ -12,7 +12,7 @@ interface IHeader {
 
 const Header = ({ path }: IHeader) => {
   const { lang, setLang } = useContext(LangContext);
-  const [content, setContent] = useState<IContent>(ptBr);
+  const [content, setContent] = useState<IContentHeader>(ptBr);
   const [currentLang, setCurrentLang] = useState(lang);
 
   const ChangeFilterFlag = (lang: string): boolean => {

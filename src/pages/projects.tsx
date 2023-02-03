@@ -2,12 +2,12 @@ import Head from "next/head";
 import Header from "@/components/Header";
 import { useContext, useEffect, useState } from "react";
 import LangContext from "@/context/LangContext";
-import { IContentHome } from "@/types/IContentHome";
-import { ptBr, en } from "@/content/Home.data";
+import { IContentExperience } from "@/types/IContentExperience";
+import { en, ptBr } from "@/content/Experience.data";
 
-export default function Home() {
+export default function Project() {
   const { lang } = useContext(LangContext);
-  const [content, setContent] = useState<IContentHome>(ptBr);
+  const [content, setContent] = useState<IContentExperience>(ptBr);
 
   useEffect(() => {
     setContent(lang === "ptBr" ? ptBr : en);

@@ -1,4 +1,4 @@
-export interface IContent {
+export interface IContentHeader {
   home: string;
   about: string;
   experience: string;
