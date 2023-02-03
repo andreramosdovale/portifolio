@@ -1,30 +1,34 @@
 import NextLink from "next/link";
-import { Flex, Text, Link, Box, Center } from "@chakra-ui/react";
-import { ptBr, en, IContent } from "./content.data";
+import { Flex, Text, Link, Box } from "@chakra-ui/react";
+import { ptBr, en } from "./content.data";
+import { IContent } from "@/types/IContent";
 import { US, BR } from "country-flag-icons/react/3x2";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import LangContext from "@/context/LangContext";
 
 interface IHeader {
-  path: string;
+  path: string | null;
 }
 
 const Header = ({ path }: IHeader) => {
+  const { lang, setLang } = useContext(LangContext);
   const [content, setContent] = useState<IContent>(ptBr);
-  const [currentLang, setCurrentLang] = useState<"ptBr" | "en">("ptBr");
+  const [currentLang, setCurrentLang] = useState(lang);
 
-  const changeFilterFlag = (lang: string): boolean => {
-    if (currentLang === lang) {
+  const ChangeFilterFlag = (lang: string): boolean => {
+    if (currentLang == lang) {
       return true;
     }
 
     return false;
   };
 
-  const changeLang = (lang: "ptBr" | "en") => {
+  const ChangeLang = (lang: string) => {
     const contentType = lang === "ptBr" ? ptBr : en;
 
-    setContent(contentType);
+    setLang(lang);
     setCurrentLang(lang);
+    setContent(contentType);
   };
 
   return (
@@ -47,7 +51,7 @@ const Header = ({ path }: IHeader) => {
           height="10vh"
           max-width="100vw"
         >
-          <Link as={NextLink} href="/">
+          <Link as={NextLink} href="/" style={{ textDecoration: "none" }}>
             <Text
               fontSize={{
                 "2xl": "2xl",
@@ -61,7 +65,7 @@ const Header = ({ path }: IHeader) => {
               {content.home}
             </Text>
           </Link>
-          <Link as={NextLink} href="/about">
+          <Link as={NextLink} href="/about" style={{ textDecoration: "none" }}>
             <Text
               fontSize={{
                 "2xl": "2xl",
@@ -75,7 +79,11 @@ const Header = ({ path }: IHeader) => {
               {content.about}
             </Text>
           </Link>
-          <Link as={NextLink} href="/experience">
+          <Link
+            as={NextLink}
+            href="/experience"
+            style={{ textDecoration: "none" }}
+          >
             <Text
               fontSize={{
                 "2xl": "2xl",
@@ -89,7 +97,11 @@ const Header = ({ path }: IHeader) => {
               {content.experience}
             </Text>
           </Link>
-          <Link as={NextLink} href="/projects">
+          <Link
+            as={NextLink}
+            href="/projects"
+            style={{ textDecoration: "none" }}
+          >
             <Text
               fontSize={{
                 "2xl": "2xl",
@@ -121,17 +133,12 @@ const Header = ({ path }: IHeader) => {
                 xxs: "1px",
               }}
               cursor="pointer"
-              onClick={() => changeLang("ptBr")}
+              onClick={() => ChangeLang("ptBr")}
             >
               <BR
                 title="Português"
-                filter={changeFilterFlag("ptBr") ? "" : "grayscale(90%)"}
+                filter={ChangeFilterFlag("ptBr") ? "" : "grayscale(90%)"}
               />
-              <Center>
-                <Text fontSize="xs">
-                  <i>PT-BR</i>
-                </Text>
-              </Center>
             </Box>
             <Box
               width={{
@@ -143,17 +150,12 @@ const Header = ({ path }: IHeader) => {
               }}
               height="100%"
               cursor="pointer"
-              onClick={() => changeLang("en")}
+              onClick={() => ChangeLang("en")}
             >
               <US
                 title="English"
-                filter={changeFilterFlag("en") ? "" : "grayscale(90%)"}
+                filter={ChangeFilterFlag("en") ? "" : "grayscale(90%)"}
               />
-              <Center>
-                <Text fontSize="xs">
-                  <i>EN</i>
-                </Text>
-              </Center>
             </Box>
           </Flex>
         </Flex>

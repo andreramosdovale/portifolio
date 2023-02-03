@@ -1,9 +1,4 @@
-export interface IContent {
-  home: string;
-  about: string;
-  experience: string;
-  projects: string;
-}
+import { IContent } from "@/types/IContent";
 
 export const ptBr: IContent = {
   home: "Home",
