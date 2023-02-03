@@ -2,12 +2,12 @@ import Head from "next/head";
 import Header from "@/components/Header";
 import { useContext, useEffect, useState } from "react";
 import LangContext from "@/context/LangContext";
-import { IContentExperience } from "@/types/IContentExperience";
-import { en, ptBr } from "@/content/Experience.data";
+import { en, ptBr } from "@/content/Project.data";
+import { IContentProject } from "@/types/IContentProject";
 
-export default function Project() {
+export default function Projects() {
   const { lang } = useContext(LangContext);
-  const [content, setContent] = useState<IContentExperience>(ptBr);
+  const [content, setContent] = useState<IContentProject>(ptBr);
 
   useEffect(() => {
     setContent(lang === "ptBr" ? ptBr : en);
@@ -22,7 +22,7 @@ export default function Project() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Header path={content.title} />
+        <Header path={content.path} />
       </main>
     </>
   );
