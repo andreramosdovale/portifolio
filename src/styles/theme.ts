@@ -2,6 +2,7 @@ import { extendTheme } from "@chakra-ui/react";
 
 const colors = {
   fontColorPrimary: "#F4F4F5",
+  fontColorSecondary: "#52525B",
   primaryColor: "#A855F7",
   secondaryColor: "#603689",
   primaryGrayColor: "#18181B",

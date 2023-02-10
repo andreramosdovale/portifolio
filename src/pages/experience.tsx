@@ -1,16 +1,10 @@
 import Head from "next/head";
 import Header from "@/components/Header";
-import { useEffect, useState } from "react";
-import { IContentExperience } from "@/types/IContentExperience";
 import { en, ptBr } from "@/content/Experience.data";
 import { IDefaultProps } from "@/types/IDefaultProps";
 
 export default function Experience({ ...props }: IDefaultProps) {
-  const [content, setContent] = useState<IContentExperience>(ptBr);
-
-  useEffect(() => {
-    setContent(props.lang === "ptBr" ? ptBr : en);
-  }, [props.lang]);
+  const content = props.lang === "ptBr" ? ptBr : en;
 
   return (
     <>

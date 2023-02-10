@@ -1,16 +1,10 @@
 import Head from "next/head";
 import Header from "@/components/Header";
-import { useEffect, useState } from "react";
 import { en, ptBr } from "@/content/Project.data";
-import { IContentProject } from "@/types/IContentProject";
 import { IDefaultProps } from "@/types/IDefaultProps";
 
 export default function Projects({ ...props }: IDefaultProps) {
-  const [content, setContent] = useState<IContentProject>(ptBr);
-
-  useEffect(() => {
-    setContent(props.lang === "ptBr" ? ptBr : en);
-  }, [props.lang]);
+  const content = props.lang === "ptBr" ? ptBr : en;
 
   return (
     <>
